@@ -23,9 +23,18 @@ export default function Home() {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const response = await axios.get("https://newsapi.org/v2/top-headlines?country=in&apiKey=9e9a218b1e9f4528ac3f83dc638f7db1");
+        const response = await axios.get("https://newsapi.org/v2/top-headlines", {
+          params: {
+            country: 'in',
+            apiKey: '9e9a218b1e9f4528ac3f83dc638f7db1',
+          },
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
         const articles: Article[] = response.data.articles;
-        const filteredArticles = articles.filter(article => article.urlToImage).slice(0, 10);
+        const filteredArticles = articles.filter(article => article.urlToImage !== null).slice(0, 10);
         setHeadlines(filteredArticles);
       } catch (error) {
         console.error("Error fetching the top headlines:", error);
