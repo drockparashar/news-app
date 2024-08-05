@@ -28,11 +28,21 @@ export default function Category({ params }: CategoryProps) {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const response = await axios.get(`https://newsapi.org/v2/everything?q=${params.category}&apiKey=9e9a218b1e9f4528ac3f83dc638f7db1`);
+        const response = await axios.get(`https://newsapi.org/v2/everything`, {
+          params: {
+            q: params.category,
+            apiKey: '9e9a218b1e9f4528ac3f83dc638f7db1',
+          },
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          httpsAgent: new (require('https').Agent)({  
+            rejectUnauthorized: false
+          }),
+        });
         const articles: Article[] = response.data.articles;
         const filteredArticles = articles.filter(article => article.urlToImage !== null).slice(0, 10);
         setHeadlines(filteredArticles);
-        console.log(params.category);
       } catch (error) {
         console.error("Error fetching the top headlines:", error);
       }
