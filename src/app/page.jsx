@@ -39,7 +39,7 @@ export default function Home() {
           <h2 className="text-2xl font-bold mb-4">Headlines</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6">
             {headlines.map((e)=>(
-              <News author={e.author} date={e.publishedAt.slice(0,10)} readingTime={"3 min"} title={e.title} content={e.description} image={e.urlToImage} url={e.url}/>
+              <News key={e.source.id} author={e.author} date={e.publishedAt.slice(0,10)} readingTime={"3 min"} title={e.title} content={e.description} image={e.urlToImage} url={e.url}/>
             ))}
           </div>
         </section>
