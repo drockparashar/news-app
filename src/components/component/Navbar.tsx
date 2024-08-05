@@ -45,7 +45,7 @@ export function Navbar() {
   const navigate=useRouter();
 
   const toggleDropdown = () => setIsOpen(!isOpen);
-  const selectCategory = (category) => {
+  const selectCategory = (category:any) => {
     setSelectedCategory(category);
     setIsOpen(false);
     console.log(category);
@@ -133,7 +133,7 @@ export function Navbar() {
   )
 }
 
-function FilePenIcon(props) {
+function FilePenIcon(props:any) {
   return (
     <svg
       {...props}
@@ -155,7 +155,7 @@ function FilePenIcon(props) {
 }
 
 
-function GlobeIcon(props) {
+function GlobeIcon(props:any) {
   return (
     <svg
       {...props}
@@ -177,7 +177,7 @@ function GlobeIcon(props) {
 }
 
 
-function HomeIcon(props) {
+function HomeIcon(props:any) {
   return (
     <svg
       {...props}
@@ -198,7 +198,7 @@ function HomeIcon(props) {
 }
 
 
-function NewspaperIcon(props) {
+function NewspaperIcon(props:any) {
   return (
     <svg
       {...props}
@@ -221,7 +221,7 @@ function NewspaperIcon(props) {
 }
 
 
-function SearchIcon(props) {
+function SearchIcon(props:any) {
   return (
     <svg
       {...props}
